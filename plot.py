@@ -1,0 +1,32 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+a = np.loadtxt('main.dat')
+
+f = plt.figure()
+f.set_figwidth(10)
+f.set_figheight(8)
+plt.plot(a[:,0], a[:,1], label='Nt=4')
+plt.plot(a[:,2], a[:,3], label='Nt=6')
+plt.plot(a[:,4], a[:,5], label='Nt=8')
+plt.plot(a[:,6], a[:,7], label='Nt=10')
+plt.legend()
+plt.xlabel("'cost' = n*N_t", fontsize=20)
+plt.xlabel("<S>/N^2", fontsize=20)
+plt.title("Calculating cost of S=N*Tr((1/2)phi^2+(1/4)phi*4) matrix 'to see which N_t value converge fast to 0.37898 line'")
+plt.axhline(0.3789)
+plt.show()
+
+f = plt.figure()
+f.set_figwidth(10)
+f.set_figheight(8)
+plt.plot(a[:,0], a[:,1], label='Nt=4')
+plt.plot(a[:,2], a[:,3], label='Nt=6')
+plt.plot(a[:,4], a[:,5], label='Nt=8')
+plt.plot(a[:,6], a[:,7], label='Nt=10')
+plt.legend()
+plt.xlabel("'cost' = n*N_t", fontsize=20)
+plt.xlabel("<S>/N^2", fontsize=20)
+plt.title("Calculating cost of S=N*Tr((1/2)phi^2+(1/4)phi*4) matrix 'to see which N_t value converge fast to 0.37898 line'")
+plt.axhline(0.3789)
+plt.savefig("plot.pdf")
