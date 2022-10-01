@@ -26,7 +26,7 @@ int main()
         for(int j=0; j<n; j+=1)
         {   
             Box(p,q);
-            A[i][j] = complex(p/sqrt(2),q/sqrt(2));
+            A[i][j] = complex(p,q);
         }
     }
 
@@ -36,7 +36,7 @@ int main()
         for(int j=0; j<n; j+=1)
         {   
             Box(p,q);
-            B[i][j] = complex(p/sqrt(2),q/sqrt(2));
+            B[i][j] = complex(p,q);
         }
     }
 
@@ -71,7 +71,12 @@ int main()
         }
 
         s = hamiltonian(A,B);
-        fout << i << "  " << (double)s/(double)(i*n*n) << endl;
+        for(int i=0; i<n; i+=1)
+        {
+            s2 += hamiltonian(A,B);
+        }
+
+        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
     }
 
     return 0;

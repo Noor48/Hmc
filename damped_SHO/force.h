@@ -5,7 +5,7 @@
 
 
 /* 
-    Calculating force (dH/d phi = dS/d phi) term = N(phi + phi^3)
+    Calculating force (dH/d phi = dS/d phi) term = p-1
 */
 double force(complex<double> A[n][n], complex<double> (&dh)[n][n])
 {
