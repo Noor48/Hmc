@@ -14,7 +14,7 @@ double force(complex<double> A[n][n], complex<double> (&dh)[n][n])
     {
         for(int j=0; j<n; j+=1)
         {
-            dh[i][j] = (A[i][j])*((double)n); 
+            dh[i][j] = (A[i][j]); 
         }
     }
 

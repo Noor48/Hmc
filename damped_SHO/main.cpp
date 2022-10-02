@@ -17,7 +17,7 @@ int main()
     double hi, hf, s=0, s2=0, r, c=0,p,q;
     const int n=10;
     //x=0;
-    complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0};
+    complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0}, C[n][n], AT[n][n] = {0};
 
 
     //generating random value for x
@@ -26,7 +26,7 @@ int main()
         for(int j=0; j<n; j+=1)
         {   
             Box(p,q);
-            A[i][j] = complex(p,q);
+            A[i][j] = 100;
         }
     }
 
@@ -42,7 +42,8 @@ int main()
 
     //metropolis test
     for(int i=1; i<10000; i+=1)
-    {
+    {   
+        C[n][n] = {0};
         for(int j=0; j<n; j+=1)
         {
             for(int k=0; k<n; k+=1)
@@ -70,13 +71,11 @@ int main()
             }
         }
 
-        s = hamiltonian(A,B);
-        for(int i=0; i<n; i+=1)
-        {
-            s2 += hamiltonian(A,B);
-        }
+        s += abs(hamiltonian(A,B));
 
-        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
+
+
+        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2 << endl;
     }
 
     return 0;
