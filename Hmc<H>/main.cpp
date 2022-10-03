@@ -70,8 +70,9 @@ int main()
             }
         }
 
-        s += hamiltonian(A,B);
-        fout << i << "  " << (double)s/(double)(i*n*n) << endl;
+        s = hamiltonian(A,B);
+        s2 += hamiltonian(A,B);
+        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
     }
 
     return 0;
