@@ -32,7 +32,7 @@ double molecular(complex<double> (&phi)[n][n], complex<double> (&P)[n][n], doubl
     for(int i=1; i<=nt-1; i+=1)
     {
         //calling force term
-        force(P,dh);
+        force(phi,dh);
         for(int j=0; j<n; j+=1)
         {
             for(int k=0; k<n; k+=1)
@@ -47,7 +47,7 @@ double molecular(complex<double> (&phi)[n][n], complex<double> (&P)[n][n], doubl
     //late step of leap frog method
     //pi(nt *dt) = pi((nt-1)dt) -  (ds/dx)((nt-1/2)dt)dt
     //xi(nt* dt) = xi((nt-1)dt) + p(nt *dt) dt/2;
-    force(P,dh);
+    force(phi,dh);
     for(int i=0; i<n; i+=1)
     {
         for(int j=0; j<n; j+=1)
