@@ -18,7 +18,7 @@ int main()
     double hi, hf, s=0, s2=0, r, c=0,p,q,x=0;
     const int n=10;
     //x=0;
-    complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0};
+    complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0},B0[n][n] = {0};
 
 
     //generating random value for x
@@ -50,6 +50,7 @@ int main()
             {   
                 //x0=x
                 A0[j][k] = A[j][k];
+                B0[j][k] = B[j][k];
             }
         }
         
@@ -67,12 +68,13 @@ int main()
                 for(int k=0; k<n; k+=1)
                 {
                     A[j][k] = A0[j][k];
+                    B[j][k] = B0[j][k];
                 }
             }
         }
 
-        s = abs(hamiltonian(A,B));
-        s2 += abs(hamiltonian(A,B));
+        s = hamiltonian(A,B);
+        s2 += hamiltonian(A,B);
         fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
 
         x = exp(-s/(298*1.38E-23));
