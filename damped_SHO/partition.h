@@ -3,35 +3,17 @@
 
 #include<hamiltonian.h>
 
-double partition(comlex<double> A[n][n], complex<double> B[n][n])
+double partition(complex<double> A[n][n], complex<double> B[n][n], double& x, int i, double& f,double t)
 {
-    ofstream fout("part.dat");
-    double x=0, p=0, dx,dp;
+    double  p=0, dx,dp;
 
-    for(int i=0; i<10000; i+=1)
-    {
-        dx = 0.01, dp 0.01;
-        for(int j=0; j<n; j+=1)
-        {
-            for(int k=0; k<n; k+=1)
-            {
-                A[i][j] += dx;
-            }
-        }
+    f = 0;
+    x = 0;
+    dx = 0.01, dp = 0.01;
 
-        for(int j=0; j<n; j+=1)
-        {
-            for(int k=0; k<n; k+=1)
-            {
-                B[i][j] += dx;
-            }
-        }
-        
-        p = hamiltonian(A,B);
-        x += exp(-p/(298*1.38E-23));
-
-        fout << i << "  " << x << endl;
-    }
+    p = hamiltonian(A,B);
+    x += exp(-i*p/(t*1.38E-23));
+    f += -(1.38E-23)*t*log(x);
 
     return 0;
 }

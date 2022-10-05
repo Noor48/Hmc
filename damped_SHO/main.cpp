@@ -2,6 +2,7 @@
 #include<force.h>
 #include<molecular.h>
 #include<matrix.h>
+#include<partition.h>
 #include<iostream>
 #include<cmath>
 #include<fstream>
@@ -14,7 +15,8 @@ int main()
 {
     srand(time(NULL));
     ofstream fout("main.dat");
-    double hi, hf, s=0, s2=0, r, c=0,p,q;
+    ofstream file("part.dat");
+    double hi, hf, s=0, s2=0, r, c=0,p,q,x,f,t=0;
     const int n=10;
     //x=0;
     complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0}, C[n][n], AT[n][n] = {0};
@@ -26,7 +28,7 @@ int main()
         for(int j=0; j<n; j+=1)
         {   
             Box(p,q);
-            A[i][j] = 100;
+            A[i][j] = complex(p,q);
         }
     }
 
@@ -43,6 +45,7 @@ int main()
     //metropolis test
     for(int i=1; i<10000; i+=1)
     {   
+        t +=1;
         C[n][n] = {0};
         for(int j=0; j<n; j+=1)
         {
@@ -71,11 +74,20 @@ int main()
             }
         }
 
-        s += abs(hamiltonian(A,B));
+        s = hamiltonian(A,B);
 
+        /*
+        for(int i=0; i<n; i+=1)
+        {
+            s2 += A[i][i].real();
+        }
+        */
+        //partition(A,B,x,i,f,t);
 
+        s2 += hamiltonian(A,B);
+        //file << i << "  " << x << "  " << f << endl;
 
-        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2 << endl;
+        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)i << endl;
     }
 
     return 0;
