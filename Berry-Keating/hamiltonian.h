@@ -2,7 +2,7 @@
 #define HAM
 
 /* 
-    Calculating Hamiltonian
+    Calculating Hamiltonian of Berry-Keating H = (1/2)(xp+px)
 */
 double hamiltonian(complex<double> A[n][n], complex<double> B[n][n])
 {
@@ -44,6 +44,6 @@ double hamiltonian(complex<double> A[n][n], complex<double> B[n][n])
         sum += H[i][i].real();
     }
 
-    return sum;
+    return 0.5*sum;
 }
 #endif

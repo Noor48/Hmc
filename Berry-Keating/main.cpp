@@ -78,7 +78,7 @@ int main()
         fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
 
         x = exp(-s/(298*1.38E-23));
-        file << s/(298*1.38E-23) << " "  << x << endl;
+        file << i << " "  << x << endl;
     }
 
     return 0;

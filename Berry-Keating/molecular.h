@@ -11,7 +11,7 @@ double molecular(complex<double> (&phi)[n][n], complex<double> (&P)[n][n], doubl
 {
     double p, q, r1, r2,nt=10; 
 
-    complex<double>  dt=0.01, dh[n][n] = {};
+    complex<double>  dt=0.01, dh[n][n] = {0};
 
     // Initial hamiltonian of molecular dynamics
     hi = hamiltonian(phi,P);
