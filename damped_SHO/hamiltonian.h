@@ -12,7 +12,7 @@ double hamiltonian(complex<double> A[n][n], complex<double> B[n][n])
     matrix(A,A2,A3,A4,a,a2,a3,a4);
     matrix(B,B2,B3,B4,b,b2,b3,b4);
 
-    sum = b2/(2*m) + (1/2)*m*omega*omega*a2 - b/m;
+    sum = b2/(2*m) + (1/2)*m*omega*omega*a2 -b/m;
 
     return sum;
 
