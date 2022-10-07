@@ -13,6 +13,15 @@ double molecular(complex<double> (&phi)[n][n], complex<double> (&P)[n][n], doubl
 
     complex<double>  dt=0.01, dh[n][n] = {0};
 
+    for(int i=0; i<n; i+=1)
+    {
+        for(int j=0; j<n; j+=1)
+        {   
+            Box(p,q);
+            P[i][j] = complex(p/sqrt(2),q/sqrt(2));
+        }
+    }
+
     // Initial hamiltonian of molecular dynamics
     hi = hamiltonian(phi,P);
 

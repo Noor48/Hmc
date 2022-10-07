@@ -31,15 +31,6 @@ int main()
         }
     }
 
-    //generating random value for p
-    for(int i=0; i<n; i+=1)
-    {
-        for(int j=0; j<n; j+=1)
-        {   
-            Box(p,q);
-            B[i][j] = complex(p/sqrt(2),q/sqrt(2));
-        }
-    }
 
     //metropolis test
     for(int i=1; i<10000; i+=1)
@@ -50,7 +41,7 @@ int main()
             {   
                 //x0=x
                 A0[j][k] = A[j][k];
-                B0[j][k] = B[j][k];
+
             }
         }
         
@@ -68,14 +59,13 @@ int main()
                 for(int k=0; k<n; k+=1)
                 {
                     A[j][k] = A0[j][k];
-                    B[j][k] = B0[j][k];
                 }
             }
         }
 
         s = hamiltonian(A,B);
         s2 += hamiltonian(A,B);
-        fout << i << "  " << (double)s/(double)(i) << "  " << (double)s2/(double)(i) << endl;
+        fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
 
         x = exp(-s/(298*1.38E-23));
         file << i << " "  << x << endl;
