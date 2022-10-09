@@ -15,7 +15,8 @@ int main()
     srand(time(NULL));
     ofstream fout("main.dat");
     ofstream file("part.dat");
-    double hi, hf, s=0, s2=0, r, c=0,p,q,x=0;
+    double hi, hf, s=0, s2=0, r, c=0,p,q,C[10000]={};
+    long double x1=0, x2, y1=0, y2=0;
     const int n=10;
     //x=0;
     complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0},B0[n][n] = {0};
@@ -65,10 +66,25 @@ int main()
 
         s = hamiltonian(A,B);
         s2 += hamiltonian(A,B);
+        C[i] = s;
         fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
 
-        x = exp(-s/(298*1.38E-23));
-        file << i << " "  << x << endl;
+        //x = exp(-s/(298*1.38E-23));
+        //file << i << " "  << x << endl;
+    }
+
+    for(int i=1; i<10000; i+=1)
+    {
+        y1 = (298*1.38*pow(10,-23));
+        x2 += exp(-C[i]/y1);
+    }
+
+    for(int i=1; i<10000; i+=1)
+    {
+        y2 = (298*1.38*pow(10,-23));
+        x1 += C[i]*exp(-C[i]/y2);
+
+        file << i << "  " << exp(-C[i]/y1) << endl;
     }
 
     return 0;

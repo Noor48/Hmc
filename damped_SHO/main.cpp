@@ -72,9 +72,13 @@ int main()
 
         C[i] = s;
         fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)i << endl;
-        x += exp(-s/(298*1.38E-23));
-        p += s*exp(-s/(298*1.38E-23));
-        file << i << "  " << p/x << endl;
+    }
+
+    for(int i=1; i<10000; i+=1)
+    {
+        x = C[i]*exp(-C[i]/(298*1.38E-23));
+        p = exp(-C[i]/(298*1.38E-23));
+        file << i << "  " << x/p << endl;
     }
 
     return 0;
