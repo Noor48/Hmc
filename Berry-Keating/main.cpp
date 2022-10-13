@@ -62,7 +62,6 @@ int main()
             
             molecular(A,B,hi,hf);
             r = (double)rand()/(double)RAND_MAX;
-            a = hf-hi;
             if(exp(hi-hf)>r)
             {
                 c+=1;
@@ -89,11 +88,11 @@ int main()
         }
 
         
-        for(int i=1; i<1000; i+=1)
+        for(int i=1; i<10000; i+=1)
         {
-            y1 = exp(-C[i]);
+            y1 += exp(-C[i]/298);
 
-            file << i << "  " << y1 << endl;
+            //file << i << "  " << y1 << endl;
         }
 
         for(int i=1; i<10000; i+=1)
@@ -101,7 +100,7 @@ int main()
             y2 = (298);
             x1 += C[i]*exp(-C[i]/298);
 
-            //file << i << "  " << y1 << endl;
+            file << i << "  " << x1/y1 << endl;
         }
    // }
     return 0;
