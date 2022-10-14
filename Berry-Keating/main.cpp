@@ -26,15 +26,16 @@ int main()
     srand(time(NULL));
     ofstream fout("main.dat");
     ofstream file("part.dat");
-    double hi, hf, s=0, s2=0, r, c=0,p,q,C[10000]={},x=0,a=0;
+    double hi, hf, s=0, s2=0, r, c=0,p,q,C[10000]={},x=0,a=0, D[10000][10]={};
     long double x1=0, x2, y1=0, y2=0;
     const int n=10;
+    double t = 298;
     //x=0;
     complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0},B0[n][n] = {0};
 
-    //#pragma omp parallel for
-    //for(int t=1; t<=10000; t+=100)
-    //{   
+    #pragma omp parallel for
+    for(int l=0; l<20; l+=1)
+    {   
         //generating random value for x
         for(int i=0; i<n; i+=1)
         {
@@ -46,7 +47,7 @@ int main()
             }
         }
 
-       // #pragma omp parallel for
+        #pragma omp parallel for
         //metropolis test
         for(int i=1; i<10000; i+=1)
         {
@@ -87,10 +88,10 @@ int main()
             //file << i << " "  << x << endl;
         }
 
-        
+        y1=0, x1=0;
         for(int i=1; i<10000; i+=1)
         {
-            y1 += exp(-C[i]/298);
+            y1 += exp(-C[i]/t);
 
             //file << i << "  " << y1 << endl;
         }
@@ -98,10 +99,25 @@ int main()
         for(int i=1; i<10000; i+=1)
         {
             y2 = (298);
-            x1 += C[i]*exp(-C[i]/298);
+            x1 += C[i]*exp(-C[i]/t);
+            //D[i][2*l] = (double)1/(double)t;
+            D[i][l] = x1/y1;
 
-            file << i << "  " << x1/y1 << endl;
+            //file << i << "  " << x1/y1 << endl;
         }
-   // }
+        //file << endl;
+        t += 10;
+    }
+
+    for(int i=1; i<10000; i+=1)
+    {
+        file << i << " ";
+        for(int l=0; l<10; l+=1)
+        {
+            file << "  " << D[i][l] << " "; 
+        }
+
+        file << endl;
+    }
     return 0;
 }
