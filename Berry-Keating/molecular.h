@@ -11,7 +11,7 @@ double molecular(complex<double> (&phi)[n][n], complex<double> (&P)[n][n], doubl
 {
     double p, q, r1, r2,nt=10; 
 
-    complex<double>  dt=0.01, dh[n][n] = {0};
+    complex<double>  dt=0.001, dh[n][n] = {0};
 
     for(int i=0; i<n; i+=1)
     {

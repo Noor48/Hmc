@@ -52,6 +52,7 @@ int main()
         
         molecular(A,B,hi,hf);
         r = r1(mt);
+        a = hf-hi;
         if(exp(hi-hf)>r)
         {
             c+=1;
@@ -70,8 +71,8 @@ int main()
 
         s = hamiltonian(A,B);
         s2 += hamiltonian(A,B);
-        C[i] = s;
-        fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
+        C[i] = s2;
+        //fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
     }
     double t = 298;
     for(int l=0; l<10; l+=1)
@@ -103,6 +104,7 @@ int main()
             file << "  " << D[i][l] << " "; 
         }
 
+        //fout << i << "  " << C[i]/i << endl;
         file << endl;
     }
     return 0;
