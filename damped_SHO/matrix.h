@@ -2,7 +2,7 @@
 #define MATRIX
 #include<complex>
 using namespace std;
-const int n=10;
+const int n=100;
 /* 
     Declaring a function for easily calling a matrix, it 2nd, 3rd, 4th order terms, and their traces.
 */

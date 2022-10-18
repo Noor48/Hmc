@@ -21,7 +21,7 @@ int main()
     uniform_real_distribution<double> r1(0, 1); 
     double hi, hf, s=0, s2=0, r, c=0,p,q,C[10000]={},x=0,a=0, D[10000][10]={};
     long double x1=0, x2=0, y1=0, y2=0;
-    const int n=10;
+    const int n=100;
     //x=0;
     complex<double> A[n][n] = {0}, A0[n][n] = {0},B[n][n] = {0},B0[n][n] = {0};
 
@@ -71,8 +71,8 @@ int main()
 
         s = hamiltonian(A,B);
         s2 += hamiltonian(A,B);
-        C[i] = s;
-        fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
+        C[i] = s2;
+        //fout << i << "  " << (double)s/(double)i << "  " << (double)s2/(double)(i) << endl;
     }
     double t = 298;
     for(int l=0; l<10; l+=1)
@@ -104,6 +104,7 @@ int main()
             file << "  " << D[i][l] << " "; 
         }
 
+        fout << i << "  " << C[i]/i << endl;
         file << endl;
     }
     return 0;
